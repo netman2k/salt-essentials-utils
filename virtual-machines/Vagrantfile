@@ -19,6 +19,11 @@ nodes = [
 ]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.hostmanager.enabled = true
+  config.hostmanager.manage_host = true
+  config.hostmanager.manage_guest = true
+
   nodes.each do |node|
     config.vm.define node[:hostname] do |node_config|
       node_config.vm.provider 'virtualbox' do |vb|
